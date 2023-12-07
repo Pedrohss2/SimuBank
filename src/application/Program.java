@@ -12,6 +12,8 @@ public class Program {
         Scanner sc = new Scanner(System.in);
 
         try {
+            System.out.println("----- Welcome to the bank SimuBank -----");
+
             System.out.println("Enter account data: ");
             System.out.println("Number : ");
             int numberOfAccount = sc.nextInt();
