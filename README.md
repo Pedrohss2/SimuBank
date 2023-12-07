@@ -8,7 +8,7 @@ SimuBank is a simple project made in Java to practice issuing exceptions. The pr
 
 
 
-```JAVA{
+```JAVA
      public void deposit(Double amount) {
         this.withdrawLimit += amount;
     }
