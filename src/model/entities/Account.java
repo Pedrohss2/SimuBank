@@ -1,6 +1,6 @@
 package model.entities;
 
-import model.exceptions.ErrorsAccount;
+import model.exceptions.ErrorsAccountException;
 
 public class Account {
     private Integer numberAccount;
@@ -51,13 +51,14 @@ public class Account {
         this.withdrawLimit += amount;
     }
 
-    public void withdraw(Double amount) throws ErrorsAccount {
+    public void withdraw(Double amount) throws ErrorsAccountException {
         if(amount > withdrawLimit) {
-            throw new ErrorsAccount("Withdraw error: The amount exceeds withdraw limit!");
+            throw new ErrorsAccountException("Withdraw error: The amount exceeds withdraw limit!");
         }
         if(withdrawLimit > balance) {
-            throw new ErrorsAccount("Withdraw error: not enough balance! ");
+            throw new ErrorsAccountException("Withdraw error: not enough balance! ");
         }
+
         this.balance -= amount;
     }
 
@@ -66,4 +67,5 @@ public class Account {
     public String toString() {
         return  String.format("%.2f", balance);
     }
+
 }

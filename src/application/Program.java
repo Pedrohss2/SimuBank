@@ -1,7 +1,7 @@
 package application;
 
 import model.entities.Account;
-import model.exceptions.ErrorsAccount;
+import model.exceptions.ErrorsAccountException;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -10,11 +10,10 @@ public class Program {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        System.out.println("----- Welcome to the bank SimuBank -----");
+        System.out.println("Enter account data: ");
 
         try {
-            System.out.println("----- Welcome to the bank SimuBank -----");
-
-            System.out.println("Enter account data: ");
             System.out.println("Number : ");
             int numberOfAccount = sc.nextInt();
 
@@ -27,7 +26,6 @@ public class Program {
             System.out.println("Withdraw limit: ");
             double withdrawLimit = sc.nextDouble();
 
-
             Account account = new Account(numberOfAccount, holder, initialBalance, withdrawLimit);
 
             System.out.println("Entre amount for withdraw: ");
@@ -36,13 +34,13 @@ public class Program {
             account.withdraw(withdraw);
 
             System.out.print("New balance: ");
-            System.out.println(account);
+            System.out.println(account.getBalance());
         }
-        catch (ErrorsAccount error) {
+        catch (ErrorsAccountException error) {
             System.out.println(error.getMessage());
         }
         catch (RuntimeException error) {
-            System.out.println("Inspected error");
+            System.out.println("Unexpected error.");
         }
 
         sc.close();
